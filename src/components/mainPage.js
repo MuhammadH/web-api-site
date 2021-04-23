@@ -86,7 +86,7 @@ class MainPage extends Component {
         if(event.target.id === 'name_section') {
             updateEvent.name = event.target.value;
         }
-        if(event.target.id === 'review_sec') {
+        if(event.target.id === 'card_section') {
             updateEvent.card_number = event.target.value;
         }
 
