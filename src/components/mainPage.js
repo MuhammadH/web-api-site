@@ -75,6 +75,7 @@ class MainPage extends Component {
 
         let euro_price = 25.0;
         let region_price = this.state.region_amount;
+        let region_code = this.state.region_cur_code;
 
         return (
             <Card>
@@ -93,7 +94,7 @@ class MainPage extends Component {
                         <b>Price in EUR: {euro_price}</b>
                     </p>
                     <p>
-                        <b>Price in USD: {region_price}</b>
+                        <b>Price in {region_code}: {region_price}</b>
                     </p>
                 </Card.Body>
                 <Card.Body>
