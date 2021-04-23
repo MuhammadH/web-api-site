@@ -145,6 +145,9 @@ class MainPage extends Component {
                     </p>
                 </Card.Body>
                 <Card.Body>
+                    <p>
+                        <b>{this.order_conf_message}</b>
+                    </p>
                 </Card.Body>
 
                 <Form horizontal>
@@ -182,12 +185,6 @@ class MainPage extends Component {
                     </FormGroup>
 
                 </Form>
-
-                <Card.Body>
-                    <p>
-                        <b>{this.order_conf_message}</b>
-                    </p>
-                </Card.Body>
             </Card>
         )
     }
