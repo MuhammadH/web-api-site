@@ -6,7 +6,7 @@ import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class MainPage extends Component {
 
-    async render() {
+    render() {
 
         let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Variegated_golden_frog_%28Mantella_baroni%29_Ranomafana.jpg';
 
@@ -50,7 +50,7 @@ class MainPage extends Component {
             console.log (new_amount + ' lo');
             return new_amount;
         }
-        await fetchCur().then(result => {
+        fetchCur().then(result => {
             console.log(result + ' cur result');
             return result;
         }).then(res => {
