@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Image, Nav} from 'react-bootstrap';
+import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class MainPage extends Component {
 
