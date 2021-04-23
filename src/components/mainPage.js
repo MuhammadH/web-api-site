@@ -58,32 +58,33 @@ class MainPage extends Component {
                 console.log(result + ' should be around 30.09');
                 region_price = result;
             })
+        }).then(final_step => {
+            return (
+                <Card>
+                    <Card.Header>Wanna buy a frog!?</Card.Header>
+                    <Card.Body>
+                        <Image className="image" src={imgUrl} thumbnail />
+                    </Card.Body>
+                    <Card.Body>
+                        <p>
+                            <b>buy this frog!</b>&nbsp; You know you want a frog, right!?
+                            &nbsp;  Hooray, frog!
+                        </p>
+                    </Card.Body>
+                    <Card.Body>
+                        <p>
+                            <b>Price in EUR: {euro_price}</b>
+                        </p>
+                        <p>
+                            <b>Price in USD: {region_price}</b>
+                        </p>
+                    </Card.Body>
+                    <Card.Body>
+                    </Card.Body>
+                </Card>
+            )
         })
 
-        return (
-            <Card>
-                <Card.Header>Wanna buy a frog!?</Card.Header>
-                <Card.Body>
-                    <Image className="image" src={imgUrl} thumbnail />
-                </Card.Body>
-                <Card.Body>
-                    <p>
-                        <b>buy this frog!</b>&nbsp; You know you want a frog, right!?
-                        &nbsp;  Hooray, frog!
-                    </p>
-                </Card.Body>
-                <Card.Body>
-                    <p>
-                        <b>Price in EUR: {euro_price}</b>
-                    </p>
-                    <p>
-                        <b>Price in USD: {region_price}</b>
-                    </p>
-                </Card.Body>
-                <Card.Body>
-                </Card.Body>
-            </Card>
-        )
     }
 }
 
