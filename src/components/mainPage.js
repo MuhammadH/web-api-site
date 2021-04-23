@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Image, Nav} from 'react-bootstrap';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Form, FormLabel, FormControl, FormGroup, Col, Button} from 'react-bootstrap';
-// const fetch = require("node-fetch");
 
 class MainPage extends Component {
 
@@ -15,6 +14,11 @@ class MainPage extends Component {
         this.state = {
             region_cur_code: '',
             region_amount: 0,
+
+            did_buy: false,
+            order_ID: 0,
+            order_conf_message: '',
+
             purchaseData:{
                 name: '',
                 card_number: '',
@@ -101,6 +105,9 @@ class MainPage extends Component {
 
     buy() {
         // submit name, address, orderID, price in base, price in region, region currency code
+        this.setState({
+            order_conf_message: 'order confirmed! Keep this number for your records. Order number: '
+        });
     }
 
     render() {
@@ -110,6 +117,7 @@ class MainPage extends Component {
         let euro_price = 25.0;
         let region_price = this.state.region_amount;
         let region_code = this.state.region_cur_code;
+        let order_conf = this.order_conf_message;
 
         return (
             <Card>
@@ -169,6 +177,12 @@ class MainPage extends Component {
                     </FormGroup>
 
                 </Form>
+
+                <Card.Body>
+                    <p>
+                        <b>{order_conf}</b>
+                    </p>
+                </Card.Body>
             </Card>
         )
     }
