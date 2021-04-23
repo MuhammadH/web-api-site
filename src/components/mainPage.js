@@ -7,7 +7,7 @@ class MainPage extends Component {
 
     render() {
 
-        let imgUrl = 'https://en.wikipedia.org/wiki/Frog#/media/File:Variegated_golden_frog_(Mantella_baroni)_Ranomafana.jpg';
+        let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Variegated_golden_frog_%28Mantella_baroni%29_Ranomafana.jpg';
 
         return (
             <Card>
