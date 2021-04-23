@@ -17,7 +17,7 @@ class MainPage extends Component {
 
             did_buy: false,
             order_ID: 0,
-            order_conf_message: '',
+            order_conf_message: 'test string',
 
             purchaseData:{
                 name: '',
