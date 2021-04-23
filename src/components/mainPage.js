@@ -2,13 +2,24 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Image, Nav} from 'react-bootstrap';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Form, FormLabel, FormControl, FormGroup, Col, Button} from 'react-bootstrap';
 // const fetch = require("node-fetch");
 
 class MainPage extends Component {
 
-    state = {
-        region_cur_code: '',
-        region_amount: 0
+    constructor(props) {
+        super(props);
+        this.updateEvent = this.updateEvent.bind(this);
+        this.buy = this.buy.bind(this);
+
+        this.state = {
+            region_cur_code: '',
+            region_amount: 0,
+            purchaseData:{
+                name: '',
+                card_number: ''
+            }
+        }
     }
 
     componentDidMount() {
@@ -69,6 +80,26 @@ class MainPage extends Component {
         })
     }
 
+    updateEvent(event){
+        let updateEvent = Object.assign({}, this.state.purchaseData);
+
+        if(event.target.id === 'name_section') {
+            updateEvent.name = event.target.value;
+        }
+        if(event.target.id === 'review_sec') {
+            updateEvent.card_number = event.target.value;
+        }
+
+        this.setState({
+            purchaseData: updateEvent
+        });
+    }
+
+    buy() {
+        // const {dispatch} = this.props;
+        // dispatch(submitReview(this.state.reviewData, this.props.movie._id));
+    }
+
     render() {
 
         let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Variegated_golden_frog_%28Mantella_baroni%29_Ranomafana.jpg';
@@ -99,6 +130,30 @@ class MainPage extends Component {
                 </Card.Body>
                 <Card.Body>
                 </Card.Body>
+
+                <Form horizontal>
+                    <FormGroup controlId="name_section">
+                        <Col componentClass={FormLabel}>
+                            Enter your name:
+                        </Col>
+                        <Col>
+                            <FormControl as="textarea" required onChange={this.updateEvent} value={this.state.purchaseData.name}/>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="card_section">
+                        <Col componentClass={FormLabel}>
+                            Enter a credit card number:
+                        </Col>
+                        <Col>
+                            <FormControl as="textarea" required onChange={this.updateEvent} value={this.state.purchaseData.card_number}/>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        <Col>
+                            <Button onClick={this.buy}>Buy frog!</Button>
+                        </Col>
+                    </FormGroup>
+                </Form>
             </Card>
         )
     }
