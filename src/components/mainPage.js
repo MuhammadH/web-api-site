@@ -106,18 +106,18 @@ class MainPage extends Component {
     buy() {
         // submit name, address, orderID, price in base, price in region, region currency code
         let order_num = Math.floor(Math.random() * 999999);
-        if (!this.did_buy) {
-            this.setState({
-                order_ID: order_num,
-                order_conf_message: 'Order confirmed! Keep this number for your records. Order number: ' + order_num,
-                did_buy: true,
-                purchaseData:{
-                    name: '',
-                    card_number: '',
-                    address: ''
-                }
-            });
-        }
+        // if (!this.state.did_buy) {
+        // }
+        this.setState({
+            order_ID: order_num,
+            order_conf_message: 'Order confirmed! Keep this number for your records. Order number: ' + order_num,
+            did_buy: true,
+            purchaseData:{
+                name: '',
+                card_number: '',
+                address: ''
+            }
+        });
     }
 
     render() {
