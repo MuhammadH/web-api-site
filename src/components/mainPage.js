@@ -55,12 +55,16 @@ class MainPage extends Component {
         }
         fetchCur().then(result => {
             console.log(result + ' cur result');
-            this.state.region_cur_code = result;
+            this.setState({
+                region_cur_code: result
+            });
             return result;
         }).then(res => {
             conversionAPI(res, 25.0).then(result => {
                 console.log(result + ' should be around 30.09');
-                this.state.region_amount = result;
+                this.setState({
+                    region_amount: result
+                });
             })
         })
     }
