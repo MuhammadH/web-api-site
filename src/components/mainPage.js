@@ -105,14 +105,17 @@ class MainPage extends Component {
 
     buy() {
         // submit name, address, orderID, price in base, price in region, region currency code
-        this.setState({
-            order_conf_message: 'order confirmed! Keep this number for your records. Order number: ',
-            purchaseData:{
-                name: '',
-                card_number: '',
-                address: ''
-            }
-        });
+        if (!this.did_buy) {
+            this.setState({
+                order_conf_message: 'order confirmed! Keep this number for your records. Order number: ',
+                did_buy: true,
+                purchaseData:{
+                    name: '',
+                    card_number: '',
+                    address: ''
+                }
+            });
+        }
     }
 
     render() {
@@ -122,7 +125,7 @@ class MainPage extends Component {
         let euro_price = 25.0;
         let region_price = this.state.region_amount;
         let region_code = this.state.region_cur_code;
-        let order_conf = this.order_conf_message;
+        let order_conf = this.state.order_conf_message;
 
         return (
             <Card>
@@ -146,7 +149,7 @@ class MainPage extends Component {
                 </Card.Body>
                 <Card.Body>
                     <p>
-                        <b>{this.order_conf_message}</b>
+                        <b>{order_conf}</b>
                     </p>
                 </Card.Body>
 
