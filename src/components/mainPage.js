@@ -91,7 +91,7 @@ class MainPage extends Component {
             updateEvent.card_number = event.target.value;
         }
         if(event.target.id === 'address_section') {
-            updateEvent.card_number = event.target.value;
+            updateEvent.address = event.target.value;
         }
 
         this.setState({
@@ -100,8 +100,7 @@ class MainPage extends Component {
     }
 
     buy() {
-        // const {dispatch} = this.props;
-        // dispatch(submitReview(this.state.reviewData, this.props.movie._id));
+        // submit name, address, orderID, price in base, price in region, region currency code
     }
 
     render() {
