@@ -105,7 +105,7 @@ class MainPage extends Component {
 
     buy() {
         // submit name, address, orderID, price in base, price in region, region currency code
-        let order_num = Math.floor(Math.random(99999) * max);
+        let order_num = Math.floor(Math.random() * 999999);
         if (!this.did_buy) {
             this.setState({
                 order_ID: order_num,
