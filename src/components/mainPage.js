@@ -17,7 +17,8 @@ class MainPage extends Component {
             region_amount: 0,
             purchaseData:{
                 name: '',
-                card_number: ''
+                card_number: '',
+                address: ''
             }
         }
     }
@@ -89,6 +90,9 @@ class MainPage extends Component {
         if(event.target.id === 'card_section') {
             updateEvent.card_number = event.target.value;
         }
+        if(event.target.id === 'address_section') {
+            updateEvent.card_number = event.target.value;
+        }
 
         this.setState({
             purchaseData: updateEvent
@@ -140,6 +144,7 @@ class MainPage extends Component {
                             <FormControl as="textarea" required onChange={this.updateEvent} value={this.state.purchaseData.name}/>
                         </Col>
                     </FormGroup>
+
                     <FormGroup controlId="card_section">
                         <Col componentClass={FormLabel}>
                             Enter a credit card number:
@@ -148,11 +153,22 @@ class MainPage extends Component {
                             <FormControl as="textarea" required onChange={this.updateEvent} value={this.state.purchaseData.card_number}/>
                         </Col>
                     </FormGroup>
+
+                    <FormGroup controlId="address_section">
+                        <Col componentClass={FormLabel}>
+                            Enter your address:
+                        </Col>
+                        <Col>
+                            <FormControl as="textarea" required onChange={this.updateEvent} value={this.state.purchaseData.address}/>
+                        </Col>
+                    </FormGroup>
+
                     <FormGroup>
                         <Col>
                             <Button onClick={this.buy}>Buy frog!</Button>
                         </Col>
                     </FormGroup>
+
                 </Form>
             </Card>
         )
