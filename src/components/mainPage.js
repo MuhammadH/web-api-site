@@ -8,6 +8,11 @@ class MainPage extends Component {
 
     render() {
 
+        let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Variegated_golden_frog_%28Mantella_baroni%29_Ranomafana.jpg';
+
+        let euro_price = 25.0;
+        let region_price = 1.23;
+
         async function fetchCur() {
             let user_cur = '';
             await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=47a11b840b6e4f1b951c65025ce182bd`)
@@ -51,12 +56,9 @@ class MainPage extends Component {
         }).then(res => {
             conversionAPI(res, 25.0).then(result => {
                 console.log(result + ' should be around 30.09');
+                region_price = result;
             })
         })
-
-        let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Variegated_golden_frog_%28Mantella_baroni%29_Ranomafana.jpg';
-
-        let euro_price = 25.0;
 
         return (
             <Card>
@@ -68,6 +70,14 @@ class MainPage extends Component {
                     <p>
                         <b>buy this frog!</b>&nbsp; You know you want a frog, right!?
                         &nbsp;  Hooray, frog!
+                    </p>
+                </Card.Body>
+                <Card.Body>
+                    <p>
+                        <b>Price in EUR: {euro_price}</b>
+                    </p>
+                    <p>
+                        <b>Price in USD: {region_price}</b>
                     </p>
                 </Card.Body>
                 <Card.Body>
