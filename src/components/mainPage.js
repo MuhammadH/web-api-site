@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Image, Nav} from 'react-bootstrap';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+// const fetch = require("node-fetch");
 
 class MainPage extends Component {
 
