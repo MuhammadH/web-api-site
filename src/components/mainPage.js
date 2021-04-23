@@ -6,13 +6,16 @@ import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class MainPage extends Component {
 
-    render() {
+    state = {
+        region_cur_code: '',
+        region_amount: 0
+    }
 
-        let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Variegated_golden_frog_%28Mantella_baroni%29_Ranomafana.jpg';
+    componentDidMount() {
+        this.getAPIData()
+    }
 
-        let euro_price = 25.0;
-        let region_price = 1.23;
-
+    getAPIData() {
         async function fetchCur() {
             let user_cur = '';
             await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=47a11b840b6e4f1b951c65025ce182bd`)
@@ -52,13 +55,22 @@ class MainPage extends Component {
         }
         fetchCur().then(result => {
             console.log(result + ' cur result');
+            this.state.region_cur_code = result;
             return result;
         }).then(res => {
             conversionAPI(res, 25.0).then(result => {
                 console.log(result + ' should be around 30.09');
-                region_price = result;
+                this.state.region_amount = result;
             })
         })
+    }
+
+    render() {
+
+        let imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Variegated_golden_frog_%28Mantella_baroni%29_Ranomafana.jpg';
+
+        let euro_price = 25.0;
+        let region_price = this.state.region_amount;
 
         return (
             <Card>
