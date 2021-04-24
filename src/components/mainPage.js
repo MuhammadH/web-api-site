@@ -34,7 +34,7 @@ class MainPage extends Component {
     getAPIData() {
         async function fetchCur() {
             let user_cur = '';
-            await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=47a11b840b6e4f1b951c65025ce182bd`)
+            await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=fed45de65e7d4971897a53add8c7250a`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
