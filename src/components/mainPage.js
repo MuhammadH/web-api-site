@@ -232,7 +232,7 @@ class MainPage extends Component {
 
                     <FormGroup>
                         <Col>
-                            <Button onClick={() =>{this.buy}}>Buy frog!</Button>
+                            <Button onClick={() =>{this.buy()}}>Buy frog!</Button>
                         </Col>
                     </FormGroup>
 
