@@ -107,18 +107,18 @@ class MainPage extends Component {
         async function hold() {
             return 0;
         }
-        async function sendDB() {
+        async function sendDB(self) {
 
             let inputs = {
                 input_data:{
-                    "name": this.state.purchaseData.name,
-                    "address": this.state.purchaseData.address,
-                    "cc": this.state.purchaseData.card_number,
+                    "name": self.state.purchaseData.name,
+                    "address": self.state.purchaseData.address,
+                    "cc": self.state.purchaseData.card_number,
                     "product_id": 1,
-                    "order_number": this.state.order_ID,
+                    "order_number": self.state.order_ID,
                     "euro_price": 25,
-                    "region_currency": this.state.region_cur_code,
-                    "region_price": this.state.region_amount
+                    "region_currency": self.state.region_cur_code,
+                    "region_price": self.state.region_amount
                 }
             };
 
@@ -154,7 +154,7 @@ class MainPage extends Component {
             hold();
             }
         ).then(data => {
-                sendDB();
+                sendDB(this);
             }
         ).then(data => {
             this.setState({
@@ -232,7 +232,7 @@ class MainPage extends Component {
 
                     <FormGroup>
                         <Col>
-                            <Button onClick={() =>{this.buy()}}>Buy frog!</Button>
+                            <Button onClick={this.buy}>Buy frog!</Button>
                         </Col>
                     </FormGroup>
 
