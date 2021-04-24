@@ -103,21 +103,68 @@ class MainPage extends Component {
         });
     }
 
-    buy() {
-        // submit name, address, orderID, price in base, price in region, region currency code
-        let order_num = Math.floor(Math.random() * 999999);
-        // if (!this.state.did_buy) {
-        // }
-        this.setState({
-            order_ID: order_num,
-            order_conf_message: 'Order confirmed! Keep this number for your records. Order number: ' + order_num,
-            did_buy: true,
-            purchaseData:{
-                name: '',
-                card_number: '',
-                address: ''
+    async buy() {
+        async function hold() {
+            return 0;
+        }
+        async function sendDB() {
+
+            let inputs = {
+                input_data:{
+                    "name": this.state.purchaseData.name,
+                    "address": this.state.purchaseData.address,
+                    "cc": this.state.purchaseData.card_number,
+                    "product_id": 1,
+                    "order_number": this.state.order_ID,
+                    "euro_price": 25,
+                    "region_currency": this.state.region_cur_code,
+                    "region_price": this.state.region_amount
+                }
+            };
+
+            let mes = {};
+
+            await fetch('https://csci3916-hw-3-m.herokuapp.com/frontend', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(inputs.input_data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log (data);
+                    mes = data;
+                    console.log (mes + ' li');
+                })
+            console.log (mes + ' lo');
+            return mes;
+        }
+
+        await hold().then(data => {
+            let order_num = Math.floor(Math.random() * 999999);
+            // if (!this.state.did_buy) {
+            // }
+            this.setState({
+                order_ID: order_num,
+                order_conf_message: 'Order confirmed! Keep this number for your records. Order number: ' + order_num,
+                did_buy: true
+            });
+            hold();
             }
-        });
+        ).then(data => {
+                sendDB();
+            }
+        ).then(data => {
+            this.setState({
+                purchaseData:{
+                    name: '',
+                    card_number: '',
+                    address: ''
+                }
+            });
+        })
     }
 
     render() {
